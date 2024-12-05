@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import PoolCard from "@/app/components/Cards/Card/PoolCard";
@@ -8,10 +8,8 @@ import MarginTop from "../../Shared/MarginTop";
 import LiquidityModal from "../../LiquidityModal";
 
 const ExploreSection = () => {
-
-   const [selectedPool, setSelectedPool] = useState(null);
-   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [selectedPool, setSelectedPool] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const pools = [
     {
@@ -49,17 +47,15 @@ const ExploreSection = () => {
     },
   ];
 
-    const handlePoolClick = (pool) => {
-      setSelectedPool(pool);
-      setIsModalOpen(true);
-    };
+  const handlePoolClick = (pool) => {
+    setSelectedPool(pool);
+    setIsModalOpen(true);
+  };
 
   return (
     <>
       <MarginTop gap="10rem" />
       <div className="min-h-screen w-full bg-[#1F211C] relative bg-[#1F211C] relative inset-0  shadow-[0_0_30px_rgba(100,72,129,0.2)] group">
-      
-
         <div className="max-w-7xl mx-auto px-6 py-20">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-12">
@@ -105,12 +101,14 @@ const ExploreSection = () => {
             {pools.map((pool, index) => (
               <div
                 key={index}
-                onClick={() => handlePoolClick(pool)}
                 className="cursor-pointer hover:scale-105 transition-transform duration-200"
               >
-                <PoolCard pool={pool} />
+                <PoolCard 
+                pool={pool} 
+                onClick={() => handlePoolClick(pool)} 
+              />
               </div>
-            ))}
+            ))}{" "}
           </div>
         </div>
       </div>
@@ -127,44 +125,3 @@ const ExploreSection = () => {
 };
 
 export default ExploreSection;
-
-
-
-
-
-
-const pools = [
-  {
-    name: "MetaVerse Token",
-    symbol: "MVT",
-    status: "Active",
-    progress: 75,
-    raised: "125.5 ETH",
-    target: "150 ETH",
-    ratio: "1:1000",
-    timeLeft: "2d 15h",
-    participants: 234,
-  },
-  {
-    name: "DeFi Protocol",
-    symbol: "DFP",
-    status: "Upcoming",
-    progress: 0,
-    raised: "0 ETH",
-    target: "300 ETH",
-    ratio: "1:2000",
-    timeLeft: "5d 8h",
-    participants: 0,
-  },
-  {
-    name: "GameFi Token",
-    symbol: "GFT",
-    status: "Completed",
-    progress: 100,
-    raised: "200 ETH",
-    target: "200 ETH",
-    ratio: "1:500",
-    timeLeft: "Ended",
-    participants: 456,
-  },
-];
