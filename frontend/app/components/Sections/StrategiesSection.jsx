@@ -2,6 +2,7 @@ import React from "react";
 import MarginTop from "../Shared/MarginTop";
 import StrategyCard from "../Cards/Card/StrategyCard";
 import Grid from "../Shared/Grid";
+import MarginBottom from "../Shared/MarginBottom";
 
 const StrategiesSection = () => {
   const strategies = [
@@ -35,7 +36,7 @@ const StrategiesSection = () => {
 
   return (
     <div>
-      <MarginTop gap="15rem" />
+      {/* <MarginTop gap="15rem" /> */}
       <Grid cols="2" justify="center" gap="5rem">
         {strategies.map((strategy, index) => (
           <StrategyCard
@@ -47,6 +48,8 @@ const StrategiesSection = () => {
           />
         ))}
       </Grid>
+
+      <MarginBottom gap="10rem" />
     </div>
   );
 };

@@ -13,9 +13,9 @@ export default function Home() {
         <HeroSection />
         <SupportedSection />
         <ProtocolFeatures />
-        <StrategiesSection />
 
         <GettingStartedSection />
+        <StrategiesSection />
       </div>
     </>
   );
