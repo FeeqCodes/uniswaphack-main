@@ -53,7 +53,7 @@ const ProtocolFeatures = () => {
                 <span className="text-[#644881]">DeFi</span>
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                AquaVault leverages Uniswap V4's cutting-edge technology to
+                AquaVault leverages Uniswap V4&apos;s cutting-edge technology to
                 provide the most secure and efficient token launch platform in
                 DeFi.
               </p>

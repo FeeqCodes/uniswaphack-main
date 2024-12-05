@@ -44,7 +44,7 @@ const LiquidityModal = ({ pool, isOpen, onClose }) => {
 
           <div className="bg-[#291240] rounded-xl p-4">
             <div className="flex justify-between mb-2">
-              <span className="text-gray-400">You'll receive</span>
+              <span className="text-gray-400">You&apos;ll receive</span>
               <span className="text-gray-400">Rate: {pool.ratio}</span>
             </div>
             <div className="flex items-center">

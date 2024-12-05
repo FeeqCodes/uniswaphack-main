@@ -55,7 +55,7 @@ const ExploreSection = () => {
   return (
     <>
       <MarginTop gap="10rem" />
-      <div className="min-h-screen w-full bg-[#1F211C] relative bg-[#1F211C] relative inset-0  shadow-[0_0_30px_rgba(100,72,129,0.2)] group">
+      <div className="min-h-screen w-full bg-[#1F211C] relative inset-0  shadow-[0_0_30px_rgba(100,72,129,0.2)] group">
         <div className="max-w-7xl mx-auto px-6 py-20">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-12">
