@@ -1,23 +1,46 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import MarginTop from "../../Shared/MarginTop";
 import MarginBottom from "../../Shared/MarginBottom";
 import IloForm from "../../Forms/IloForm";
-
-
-
+import { launchToken } from "@/app/utils/contract";
 
 const IloSection = () => {
+  const [isLaunching, setIsLaunching] = useState(false);
+
+  const handleLaunch = async (formData) => {
+    try {
+      setIsLaunching(true);
+      const launchData = {
+        token: formData.tokenAddress,
+        baseCurrency: formData.baseCurrency,
+        saleTarget: formData.saleTarget,
+        totalSales: 0, // Initialize as 0
+        rewardFactorBps: formData.rewardFactor,
+        poolFee: formData.poolFee,
+        tickSpacing: formData.tickSpacing,
+        presaleDuration: formData.presaleDuration,
+        vestingDuration: formData.vestingDuration,
+        launchedAt: BigInt(Math.floor(Date.now() / 1000)), // Current timestamp
+        updatedAt: BigInt(Math.floor(Date.now() / 1000)), // Current timestamp
+        sqrtPriceX96: formData.sqrtPrice,
+        launchStatus: 0, // PRESALE status
+      };
+
+      const result = await launchToken(launchData);
+      console.log("Launch successful:", result);
+    } catch (error) {
+      console.error("Launch failed:", error);
+    } finally {
+      setIsLaunching(false);
+    }
+  };
+
   return (
     <>
       <MarginTop gap="10rem" />
-      <div className="min-h-screen w-full bg-[#1F211C] relative inset-0  shadow-[0_0_30px_rgba(100,72,129,0.2)] group">
-        {/* Background Elements */}
-        {/* <div className="absolute inset-0 bg-[#1F211C]  shadow-[0_0_30px_rgba(100,72,129,0.2)] group ">
-          <div className="absolute top-20 right-40 w-72 h-72 bg-gradient-to-r from-[#644881] to-transparent rounded-full blur-[120px] opacity-20" />
-          <div className="absolute bottom-40 left-20 w-96 h-96 bg-gradient-to-r from-[#448175] to-transparent rounded-full blur-[150px] opacity-10" />
-        </div> */}
-
-        {/* Content */}
+      <div className="min-h-screen w-full bg-[#1F211C] relative inset-0 shadow-[0_0_30px_rgba(100,72,129,0.2)] group">
         <div className="max-w-7xl mx-auto px-6 py-20">
           <div className="flex justify-between items-start mb-12">
             <div>
@@ -35,7 +58,7 @@ const IloSection = () => {
             </div>
           </div>
 
-          <IloForm />
+          <IloForm onSubmit={handleLaunch} isLaunching={isLaunching} />
         </div>
       </div>
       <MarginBottom gap=" 15rem" />
