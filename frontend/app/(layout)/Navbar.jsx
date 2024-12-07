@@ -131,22 +131,22 @@ const StyledButton = styled.button`
                 ensName,
                 chain,
               }) => {
+                const truncatedAddress = address
+                  ? `${address.slice(0, 6)}...${address.slice(-4)}`
+                  : "";
+
                 return (
                   <button
                     className="px-6 py-2.5 bg-gradient-to-r from-[#644881] to-[#291240] text-white rounded-xl hover:opacity-90 transition-all"
                     onClick={show}
                   >
-                    {isConnected ? address : "Connect Wallet"}
+                    {isConnected ? truncatedAddress : "Connect Wallet"}
                   </button>
                 );
               }}
             </ConnectKitButton.Custom>
-            {/* <Link href="/create-ilo">
-              <button className="px-6 py-2.5 bg-gradient-to-r from-[#644881] to-[#291240] text-white rounded-xl hover:opacity-90 transition-all">
-                Create ILO
-              </button>
-            </Link> */}
 
+           
           </div>
         </div>
       </div>
@@ -155,3 +155,5 @@ const StyledButton = styled.button`
 };
 
 export default Navbar;
+
+

@@ -2,6 +2,7 @@ import React from "react";
 import CardLayout from "../CardLayout";
 import Buttons from "../../Shared/Buttons";
 import Image from "next/image";
+import Link from "next/link";
 
 const SupportedCard = ({ width, height, bg, data }) => {
   return (
@@ -37,7 +38,9 @@ const SupportedCard = ({ width, height, bg, data }) => {
         {/* Action Button */}
         <div className="w-full flex  justify-center">
 
+        <Link href="/create-ilo">
         <Buttons text="Launch on Platform" />
+        </Link>
         </div>
       </div>
 

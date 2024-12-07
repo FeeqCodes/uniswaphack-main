@@ -1,6 +1,7 @@
 import React from "react";
 import CardLayout from "../CardLayout";
 import Buttons from "../../Shared/Buttons";
+import Link from "next/link";
 
 const StrategyCard = ({
   width,
@@ -12,6 +13,7 @@ const StrategyCard = ({
   benefits,
   buttonText,
   color,
+  href
 }) => {
   return (
     <CardLayout width={width} height={height} bg={bg}>
@@ -44,7 +46,9 @@ const StrategyCard = ({
 
         {/* Action Button */}
         <div className="mt-auto">
+          <Link href={href}>
           <Buttons text={buttonText} color="white" />
+          </Link>
         </div>
       </div>
 

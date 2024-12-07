@@ -2,6 +2,7 @@ import React from "react";
 import MarginTop from "../Shared/MarginTop";
 import MarginBottom from "../Shared/MarginBottom";
 import Buttons from "../Shared/Buttons";
+import Link from "next/link";
 
 const GettingStartedSection = () => {
   const creatorSteps = [
@@ -147,7 +148,9 @@ const GettingStartedSection = () => {
           </div>
 
           <div className="text-center mt-16">
+            <Link href="/create-ilo">
             <Buttons text="Start Building Now" />
+            </Link>
           </div>
         </div>
       </div>

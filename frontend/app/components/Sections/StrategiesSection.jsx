@@ -18,6 +18,7 @@ const StrategiesSection = () => {
       ],
       buttonText: "Create ILO",
       color: "from-[#644881]",
+      href: "/create-ilo",
     },
     {
       title: "Provide Liquidity",
@@ -31,6 +32,7 @@ const StrategiesSection = () => {
       ],
       buttonText: "View Pools",
       color: "from-[#448175]",
+      href: "/explore-pools",
     },
   ];
 
