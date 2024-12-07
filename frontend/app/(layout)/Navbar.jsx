@@ -1,9 +1,43 @@
+'use client';
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Buttons from "../components/Shared/Buttons";
 
+import { ConnectKitButton } from "connectkit";
+
+import styled from "styled-components";
+
+
+
 const Navbar = () => {
+
+const StyledButton = styled.button`
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  padding: 14px 24px;
+  color: #ffffff;
+  background: #1a88f8;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 10rem;
+  box-shadow: 0 4px 24px -6px #1a88f8;
+
+  transition: 200ms ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 40px -6px #1a88f8;
+  }
+  &:active {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 32px -6px #1a88f8;
+  }
+`;
+
+
+  
   const navItems = [
     {
       title: "Products",
@@ -84,14 +118,35 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="flex items-center space-x-4">
-            <button className="px-4 py-2 text-gray-300 hover:text-white transition-colors">
+            {/* <button className="px-4 py-2 text-gray-300 hover:text-white transition-colors">
               Connect Wallet
-            </button>
-            <Link href="/create-ilo">
+            </button> */}
+            <ConnectKitButton.Custom>
+              {({
+                isConnected,
+                isConnecting,
+                show,
+                hide,
+                address,
+                ensName,
+                chain,
+              }) => {
+                return (
+                  <button
+                    className="px-6 py-2.5 bg-gradient-to-r from-[#644881] to-[#291240] text-white rounded-xl hover:opacity-90 transition-all"
+                    onClick={show}
+                  >
+                    {isConnected ? address : "Connect Wallet"}
+                  </button>
+                );
+              }}
+            </ConnectKitButton.Custom>
+            {/* <Link href="/create-ilo">
               <button className="px-6 py-2.5 bg-gradient-to-r from-[#644881] to-[#291240] text-white rounded-xl hover:opacity-90 transition-all">
                 Create ILO
               </button>
-            </Link>
+            </Link> */}
+
           </div>
         </div>
       </div>

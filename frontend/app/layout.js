@@ -2,6 +2,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./(layout)/Navbar";
 import Footer from "./(layout)/Footer";
+import { Web3Provider } from "./context/Web3Provider.jsx";
+
+
 
 export const metadata = {
   title: "Create Next App",
@@ -11,6 +14,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Web3Provider>
+
       <body className={``}>
         <main className="relative max-w-[1280px] w-[90%] m-auto py-5 h-auto font-lato ">
           <Navbar />
@@ -18,6 +23,7 @@ export default function RootLayout({ children }) {
           <Footer />
         </main>
       </body>
+      </Web3Provider>
     </html>
   );
 }
