@@ -5,33 +5,71 @@ import MarginTop from "../../Shared/MarginTop";
 import MarginBottom from "../../Shared/MarginBottom";
 import IloForm from "../../Forms/IloForm";
 import { launchToken } from "@/app/utils/contract";
+import { useRouter } from "next/navigation";
+import LoadingModal from "./LoadingModal";
+
+
 
 const IloSection = () => {
+  const router = useRouter();
+
   const [isLaunching, setIsLaunching] = useState(false);
+  const [modalState, setModalState] = useState({
+    isOpen: false,
+    status: "loading",
+    message: "",
+  });
 
   const handleLaunch = async (formData) => {
     try {
       setIsLaunching(true);
+      setModalState({
+        isOpen: true,
+        status: "loading",
+        message: "Launching your token...",
+      });
+
       const launchData = {
         token: formData.tokenAddress,
         baseCurrency: formData.baseCurrency,
-        saleTarget: formData.saleTarget,
-        totalSales: 0, // Initialize as 0
-        rewardFactorBps: formData.rewardFactor,
-        poolFee: formData.poolFee,
-        tickSpacing: formData.tickSpacing,
-        presaleDuration: formData.presaleDuration,
-        vestingDuration: formData.vestingDuration,
-        launchedAt: BigInt(Math.floor(Date.now() / 1000)), // Current timestamp
-        updatedAt: BigInt(Math.floor(Date.now() / 1000)), // Current timestamp
-        sqrtPriceX96: formData.sqrtPrice,
-        launchStatus: 0, // PRESALE status
+        saleTarget: BigInt(formData.saleTarget),
+        totalSales: BigInt(0),
+        rewardFactorBps: BigInt(formData.rewardFactor),
+        poolFee: BigInt(formData.poolFee),
+        tickSpacing: BigInt(formData.tickSpacing),
+        presaleDuration: BigInt(formData.presaleDuration),
+        vestingDuration: BigInt(formData.vestingDuration),
+        launchedAt: BigInt(Math.floor(Date.now() / 1000)),
+        updatedAt: BigInt(Math.floor(Date.now() / 1000)),
+        sqrtPriceX96: BigInt(formData.sqrtPrice),
+        launchStatus: 0,
       };
 
       const result = await launchToken(launchData);
-      console.log("Launch successful:", result);
+
+      setModalState({
+        isOpen: true,
+        status: "success",
+        message: `Launch successful! Transaction: ${result.slice(0, 10)}...`,
+      });
+
+      setTimeout(() => {
+        setModalState({ isOpen: false, status: "", message: "" });
+        router.push("/explore-pools");
+
+      }, 3000);
+
     } catch (error) {
-      console.error("Launch failed:", error);
+      setModalState({
+        isOpen: true,
+        status: "error",
+        message: `Launch failed: ${error.message}`,
+      });
+
+      setTimeout(() => {
+        setModalState({ isOpen: false, status: "", message: "" });
+      }, 3000);
+
     } finally {
       setIsLaunching(false);
     }
@@ -61,6 +99,11 @@ const IloSection = () => {
           <IloForm onSubmit={handleLaunch} isLaunching={isLaunching} />
         </div>
       </div>
+      <LoadingModal
+        isOpen={modalState.isOpen}
+        status={modalState.status}
+        message={modalState.message}
+      />
       <MarginBottom gap=" 15rem" />
     </>
   );

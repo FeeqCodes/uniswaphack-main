@@ -8,7 +8,7 @@ const Grid = ({ children, cols, justify, gap }) => {
         gridGap: gap,
         gridColumn: cols,
         justifyContent: justify }}
-      className={`grid  grid-flow-col  justify-center`}
+      className={`grid w-full grid-flow-col  justify-center`}
     >
       {children}
     </div>

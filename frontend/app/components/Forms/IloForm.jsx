@@ -2,12 +2,15 @@
 
 import React, { useState } from "react";
 import CardLayout from "../Cards/CardLayout";
+import Grid from "../Shared/Grid";
 
 
 
 const IloForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     tokenAddress: "",
+    tokenName: "", // Add this
+    tokenSymbol: "",
     saleTarget: "",
     baseCurrency: "",
     rewardFactor: "",
@@ -45,32 +48,63 @@ const IloForm = ({ onSubmit }) => {
               <h3 className="text-xl font-bold text-white">
                 Token Configuration
               </h3>
-              <div className="bg-[#0A0F02] p-6 rounded-xl space-y-6">
-                <div>
-                  <label className="text-gray-400 text-sm block mb-2">
-                    Token Address
-                  </label>
-                  <input
-                    name="tokenAddress"
-                    value={formData.tokenAddress}
-                    onChange={handleChange}
-                    className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
-                    type="text"
-                    placeholder="0x..."
-                  />
+              <div className="bg-[#0A0F02]  p-6 rounded-xl space-y-6">
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-gray-400 text-sm block mb-2">
+                      Token Address
+                    </label>
+                    <input
+                      name="tokenAddress"
+                      value={formData.tokenAddress}
+                      onChange={handleChange}
+                      className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
+                      type="text"
+                      placeholder="0x..."
+                    />
+                  </div>
+                  <div>
+                    <label className="text-gray-400 text-sm block mb-2">
+                      Sale Target
+                    </label>
+                    <input
+                      name="saleTarget"
+                      value={formData.saleTarget}
+                      onChange={handleChange}
+                      className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
+                      type="number"
+                      placeholder="Enter total tokens for sale"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label className="text-gray-400 text-sm block mb-2">
-                    Sale Target
-                  </label>
-                  <input
-                    name="saleTarget"
-                    value={formData.saleTarget}
-                    onChange={handleChange}
-                    className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
-                    type="number"
-                    placeholder="Enter total tokens for sale"
-                  />
+
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-gray-400 text-sm block mb-2">
+                      Token Name
+                    </label>
+                    <input
+                      name="tokenName"
+                      value={formData.tokenName}
+                      onChange={handleChange}
+                      className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
+                      type="text"
+                      placeholder="Enter total tokens for sale"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-gray-400 text-sm block mb-2">
+                      Token Symbol
+                    </label>
+                    <input
+                      name="tokenSymbol"
+                      value={formData.tokenSymbol}
+                      onChange={handleChange}
+                      className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
+                      type="text"
+                      placeholder="Enter total tokens for sale"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -193,7 +227,7 @@ const IloForm = ({ onSubmit }) => {
       </div>
 
       {/* Preview Panel */}
-      <div className="space-y-6">
+      <div className="space-y-6 bg-[#1F211C] relative inset-0 shadow-[0_0_10px_rgba(50,72,100,0.2)] group bg-[#1F211C]/60 p-4 rounded-xl border border-gray-800 h-auto">
         <CardLayout
           width="100%"
           height="auto"
