@@ -85,7 +85,7 @@ abstract contract ILOLaunchpad is ILOAdmin {
         );
 
         //Todo uncomment later, commented because our contract is not a Hook yet
-        //UNI_V4.initialize(pool, _launchData.sqrtPriceX96);
+        // UNI_V4.initialize(pool, _launchData.sqrtPriceX96);
 
         poolId[keccak256(abi.encode(pool))] = launchIndex;
 
