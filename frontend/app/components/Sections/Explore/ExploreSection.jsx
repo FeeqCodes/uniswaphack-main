@@ -125,3 +125,77 @@ const ExploreSection = () => {
 };
 
 export default ExploreSection;
+
+
+
+
+
+
+
+// "use client";
+
+// import React, { useState, useEffect } from "react";
+// import { useContract } from "@/app/context/Web3Provider.jsx";
+
+// const ExploreSection = () => {
+//   const [launchedPools, setLaunchedPools] = useState([]);
+//   const { contract } = useContract();
+
+//   // Function to format on-chain data
+//   const formatPoolData = (rawPool) => ({
+//     token: rawPool.token,
+//     baseCurrency: rawPool.baseCurrency,
+//     saleTarget: rawPool.saleTarget.toString(),
+//     totalSales: rawPool.totalSales.toString(),
+//     rewardFactorBps: rawPool.rewardFactorBps,
+//     poolFee: rawPool.poolFee,
+//     tickSpacing: rawPool.tickSpacing,
+//     presaleDuration: rawPool.presaleDuration,
+//     vestingDuration: rawPool.vestingDuration,
+//     launchedAt: rawPool.launchedAt,
+//     updatedAt: rawPool.updatedAt,
+//     sqrtPriceX96: rawPool.sqrtPriceX96,
+//     launchStatus: rawPool.launchStatus,
+//     // Calculate UI values
+//     progress: (rawPool.totalSales / rawPool.saleTarget) * 100,
+//     ratio: `1:${rawPool.rewardFactorBps / 10000}`,
+//     timeLeft: calculateTimeRemaining(rawPool.launchedAt, rawPool.presaleDuration)
+//   });
+
+//   // Fetch pools from smart contract
+//   const fetchPools = async () => {
+//     try {
+//       const pools = await contract.getAllLaunches();
+//       const formattedPools = pools.map(formatPoolData);
+//       setLaunchedPools(formattedPools);
+//     } catch (error) {
+//       console.error("Failed to fetch pools:", error);
+//     }
+//   };
+
+//   // Time calculation helper
+//   const calculateTimeRemaining = (launchTime, duration) => {
+//     const endTime = Number(launchTime) + Number(duration);
+//     const now = Math.floor(Date.now() / 1000);
+//     const remaining = endTime - now;
+    
+//     if (remaining <= 0) return "Ended";
+//     const days = Math.floor(remaining / 86400);
+//     const hours = Math.floor((remaining % 86400) / 3600);
+//     return `${days}d ${hours}h`;
+//   };
+
+//   useEffect(() => {
+//     fetchPools();
+//     // Set up polling interval to keep data fresh
+//     const interval = setInterval(fetchPools, 15000);
+//     return () => clearInterval(interval);
+//   }, [contract]);
+
+//   // Rest of your component code remains the same, but use launchedPools instead of the static pools array
+//   return (
+//     // ... existing JSX using launchedPools instead of static pools
+//   );
+// };
+
+// export default ExploreSection;

@@ -4,7 +4,6 @@ import CardLayout from "../Cards/CardLayout";
 const IloForm = () => {
   return (
     <div className="grid grid-cols-3 gap-8">
-      {/* Main Form */}
       <div className="col-span-2">
         <CardLayout
           width="100%"
@@ -13,7 +12,7 @@ const IloForm = () => {
           className="rounded-2xl p-8"
         >
           <form className="space-y-8">
-            {/* Token Details */}
+            {/* Token Configuration */}
             <div className="space-y-6">
               <h3 className="text-xl font-bold text-white">
                 Token Configuration
@@ -29,32 +28,20 @@ const IloForm = () => {
                     placeholder="0x..."
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-gray-400 text-sm block mb-2">
-                      Token Name
-                    </label>
-                    <input
-                      className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
-                      type="text"
-                      placeholder="Enter token name"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-gray-400 text-sm block mb-2">
-                      Token Symbol
-                    </label>
-                    <input
-                      className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
-                      type="text"
-                      placeholder="Symbol"
-                    />
-                  </div>
+                <div>
+                  <label className="text-gray-400 text-sm block mb-2">
+                    Sale Target Amount
+                  </label>
+                  <input
+                    className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
+                    type="number"
+                    placeholder="Enter total tokens for sale"
+                  />
                 </div>
               </div>
             </div>
 
-            {/* Pool Configuration */}
+            {/* Pool Parameters */}
             <div className="space-y-6">
               <h3 className="text-xl font-bold text-white">Pool Parameters</h3>
               <div className="bg-[#0A0F02] p-6 rounded-xl space-y-6">
@@ -63,68 +50,92 @@ const IloForm = () => {
                     <label className="text-gray-400 text-sm block mb-2">
                       Base Currency
                     </label>
-                    <select className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors">
-                      <option value="eth">ETH</option>
-                      <option value="usdc">USDC</option>
-                    </select>
+                    <input
+                      className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
+                      type="text"
+                      placeholder="Base currency address"
+                    />
                   </div>
                   <div>
                     <label className="text-gray-400 text-sm block mb-2">
-                      Token Ratio
+                      Reward Factor (BPS)
                     </label>
-                    <div className="flex items-center gap-4">
-                      <input
-                        className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
-                        type="number"
-                        placeholder="1"
-                      />
-                      <span className="text-white text-2xl">:</span>
-                      <input
-                        className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
-                        type="number"
-                        placeholder="1"
-                      />
-                    </div>
+                    <input
+                      className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
+                      type="number"
+                      placeholder="10000 = 1:1 ratio"
+                    />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <label className="text-gray-400 text-sm block mb-2">
-                      Start Date
+                      Pool Fee
                     </label>
                     <input
                       className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
-                      type="datetime-local"
+                      type="number"
+                      placeholder="Fee in basis points"
                     />
                   </div>
                   <div>
                     <label className="text-gray-400 text-sm block mb-2">
-                      End Date
+                      Tick Spacing
                     </label>
                     <input
                       className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
-                      type="datetime-local"
+                      type="number"
+                      placeholder="Enter tick spacing"
                     />
                   </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-gray-400 text-sm block mb-2">
+                      Presale Duration (seconds)
+                    </label>
+                    <input
+                      className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
+                      type="number"
+                      placeholder="Duration in seconds"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-gray-400 text-sm block mb-2">
+                      Vesting Duration (seconds)
+                    </label>
+                    <input
+                      className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
+                      type="number"
+                      placeholder="Duration in seconds"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-gray-400 text-sm block mb-2">
+                    Initial sqrt Price X96
+                  </label>
+                  <input
+                    className="w-full bg-[#1F211C] text-white p-4 rounded-xl outline-none border border-gray-800 focus:border-[#644881] transition-colors"
+                    type="number"
+                    placeholder="Initial sqrt price scaled by 2^96"
+                  />
                 </div>
               </div>
             </div>
 
-            {/* Submit Button */}
-            <button
-              className="w-full bg-gradient-to-r from-[#644881] to-[#291240] text-white font-semibold py-4 rounded-xl hover:opacity-90 transition-all"
-              type="submit"
-            >
+            <button className="w-full bg-gradient-to-r from-[#644881] to-[#291240] text-white font-semibold py-4 rounded-xl hover:opacity-90 transition-all">
               Create ILO Pool
             </button>
           </form>
         </CardLayout>
       </div>
 
-      {/* Side Panel */}
+      {/* Preview Panel */}
       <div className="space-y-6">
-        {/* Pool Preview */}
         <CardLayout
           width="100%"
           height="auto"
@@ -134,21 +145,16 @@ const IloForm = () => {
           <h3 className="text-lg font-bold text-white mb-4">Pool Preview</h3>
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">Initial Rate</span>
-              <span className="text-white">1 ETH = 1000 TOKEN</span>
+              <span className="text-gray-400">Launch Status</span>
+              <span className="text-white">PRESALE</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">Pool Duration</span>
-              <span className="text-white">7 days</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-400">Lock Period</span>
-              <span className="text-white">180 days</span>
+              <span className="text-gray-400">Protocol Fee</span>
+              <span className="text-white">Calculate based on sale target</span>
             </div>
           </div>
         </CardLayout>
 
-        {/* Gas Estimation */}
         <CardLayout
           width="100%"
           height="auto"
